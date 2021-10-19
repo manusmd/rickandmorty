@@ -27,13 +27,19 @@ function renderApp() {
     ]
   );
 
-  const card = createCharacterCard();
   const mainElement = createElement(
     'main',
     {
       className: 'main',
     },
-    [card]
+    [
+      createCharacterCard({
+        name: 'Rick',
+      }),
+      createCharacterCard({
+        name: 'Morty',
+      }),
+    ]
   );
 
   appElement.append(headerElement, mainElement);

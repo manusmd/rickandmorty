@@ -1,0 +1,41 @@
+.characterCard {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  background-color: var(--color-card-background);
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  column-gap: 1rem;
+  overflow: hidden;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.characterDetails {
+  display: grid;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.characterName {
+  font-size: 2rem;
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+.characterName:hover {
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.characterStatus {
+  margin-top: 0.5rem;
+}
+
+.cardImage {
+  height: 100%;
+  width: auto;
+}
+
+.characterCardTitles {
+  color: var(--color-card-text-title);
+}
