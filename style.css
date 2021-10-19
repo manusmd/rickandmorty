@@ -1,8 +1,45 @@
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Space+Grotesk&display=swap');
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-background: #25282e;
+  --color-header-background: rgb(0, 0, 0);
+  --color-header-text: rgb(251, 255, 0);
+  --color-card-text-primary: #f5f5f5;
+  --color-card-text-secondary: #ff9800;
+  --color-card-background: #3c3e43;
+  --font-primary: 'Montserrat', sans-serif;
+  --font-card: 'Space Grotesk', sans-serif;
+}
+
+body {
+  font-family: var(--font-primary);
+  margin: 0;
+  background-color: var(--color-background);
+}
+
+.header {
+  display: flex;
+  background-color: var(--color-header-background);
+  color: var(--color-header-text);
+  padding: 2rem;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  align-items: center;
+  justify-content: center;
+}
+
+.rickmortyIMG {
+  height: 8rem;
+  margin: 0.5rem;
+}
+
+.main {
+  padding: 2rem;
+  background-color: var(--color-background);
+  color: var(--color-card-text-primary);
 }
