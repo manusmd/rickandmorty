@@ -1,5 +1,6 @@
 import './style.css';
 import { createElement } from './lib/element.js';
+import createCharacterCard from './components/characterCard';
 
 function renderApp() {
   const appElement = document.querySelector('#app');
@@ -26,12 +27,13 @@ function renderApp() {
     ]
   );
 
+  const card = createCharacterCard();
   const mainElement = createElement(
     'main',
     {
       className: 'main',
     },
-    [createElement('p', { textContent: 'In development...' })]
+    [card]
   );
 
   appElement.append(headerElement, mainElement);
