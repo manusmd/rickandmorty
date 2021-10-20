@@ -33,9 +33,22 @@
 
 .cardImage {
   height: 100%;
-  width: auto;
+  width: 100%;
+  object-fit: cover;
 }
 
 .characterCardTitles {
   color: var(--color-card-text-title);
+}
+
+@media only screen and (max-width: 550px) {
+  .characterCard {
+    display: flex;
+    flex-direction: column;
+    height: min-content;
+    font-size: 1rem;
+  }
+  .characterName {
+    font-size: 1.5rem;
+  }
 }
