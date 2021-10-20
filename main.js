@@ -34,10 +34,20 @@ function renderApp() {
     },
     [
       createCharacterCard({
-        name: 'Rick',
+        imgSource: 'https://rickandmortyapi.com/api/character/avatar/15.jpeg',
+        name: 'Alien Rick',
+        status: 'Unknown',
+        race: 'Alien',
+        location: 'Citadel of Ricks',
+        firstSeen: 'Close Rick-counters of the Rick Kind',
       }),
       createCharacterCard({
-        name: 'Morty',
+        imgSource: 'https://rickandmortyapi.com/api/character/avatar/126.jpeg',
+        name: 'Fleeb',
+        status: 'Unknown',
+        race: 'Alien',
+        location: 'Interdimensional Cable',
+        firstSeen: 'Interdimensional Cable 2: Tempting Fate',
       }),
     ]
   );
