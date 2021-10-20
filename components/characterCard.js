@@ -2,13 +2,27 @@ import { createElement } from '../lib/element';
 import styles from './characterCard.module.css';
 
 export default function createCharacterCard({
-  imgSource,
+  image,
   name,
   status,
-  race,
+  species,
   location,
-  firstSeen,
+  episode,
 }) {
+  const firstEpisode = episode[0];
+  const firstSeen = createElement('p', {
+    className: styles.characterSpecs,
+  });
+
+  const locationURL = location.url;
+  const characterLocation = createElement(
+    'p',
+    {
+      className: styles.characterSpecs,
+    },
+    [location.name]
+  );
+
   const element = createElement(
     'article',
     {
@@ -17,7 +31,7 @@ export default function createCharacterCard({
     [
       createElement('img', {
         className: styles.cardImage,
-        src: imgSource,
+        src: image,
         alt: 'Character',
       }),
       createElement(
@@ -44,7 +58,7 @@ export default function createCharacterCard({
                 {
                   className: styles.characterStatus,
                 },
-                [`${status} - ${race}`]
+                [`${status} - ${species}`]
               ),
             ]
           ),
@@ -58,13 +72,7 @@ export default function createCharacterCard({
                 className: styles.characterCardTitles,
                 textContent: 'Last known location:',
               }),
-              createElement(
-                'p',
-                {
-                  className: styles.characterSpecs,
-                },
-                [location]
-              ),
+              characterLocation,
             ]
           ),
           createElement(
@@ -77,18 +85,27 @@ export default function createCharacterCard({
                 className: styles.characterCardTitles,
                 textContent: 'First seen in:',
               }),
-              createElement(
-                'p',
-                {
-                  className: styles.characterSpecs,
-                },
-                [firstSeen]
-              ),
+              firstSeen,
             ]
           ),
         ]
       ),
     ]
   );
+
+  fetch(firstEpisode)
+    .then((response) => response.json())
+    .then((body) => {
+      firstSeen.textContent = body.name;
+    });
+
+  if (locationURL) {
+    fetch(locationURL)
+      .then((response) => response.json())
+      .then((body) => {
+        characterLocation.textContent = body.name;
+      })
+      .catch((error) => console.error(error, locationURL, name));
+  }
   return element;
 }

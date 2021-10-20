@@ -2,7 +2,7 @@ import './style.css';
 import { createElement } from './lib/element.js';
 import createCharacterCard from './components/characterCard';
 
-function renderApp() {
+async function renderApp() {
   const appElement = document.querySelector('#app');
 
   const headerElement = createElement(
@@ -27,24 +27,12 @@ function renderApp() {
     ]
   );
 
-  const characters = [
-    {
-      imgSource: 'https://rickandmortyapi.com/api/character/avatar/15.jpeg',
-      name: 'Alien Rick',
-      status: 'Unknown',
-      race: 'Alien',
-      location: 'Citadel of Ricks',
-      firstSeen: 'Close Rick-counters of the Rick Kind',
-    },
-    {
-      imgSource: 'https://rickandmortyapi.com/api/character/avatar/126.jpeg',
-      name: 'Fleeb',
-      status: 'Unknown',
-      race: 'Alien',
-      location: 'Interdimensional Cable',
-      firstSeen: 'Interdimensional Cable 2: Tempting Fate',
-    },
-  ];
+  const characterResponse = await fetch(
+    'https://rickandmortyapi.com/api/character'
+  );
+  const body = await characterResponse.json();
+  console.log(body);
+  const characters = body.results;
 
   const characterCards = characters.map((character) =>
     createCharacterCard(character)
