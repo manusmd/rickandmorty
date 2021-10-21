@@ -2,6 +2,7 @@ import './style.css';
 import { createElement } from './lib/element.js';
 import createCharacterCard from './components/characterCard';
 import apifetchFunction from './lib/apifetch';
+import createSearchBar from './components/searchBar';
 
 async function renderApp() {
   const appElement = document.querySelector('#app');
@@ -36,6 +37,10 @@ async function renderApp() {
     createCharacterCard(character)
   );
 
+  const searchBar = createSearchBar(function () {
+    alert('search');
+  });
+
   const mainElement = createElement(
     'main',
     {
@@ -44,6 +49,6 @@ async function renderApp() {
     characterCards
   );
 
-  appElement.append(headerElement, mainElement);
+  appElement.append(headerElement, searchBar, mainElement);
 }
 renderApp();
