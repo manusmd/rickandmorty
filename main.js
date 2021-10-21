@@ -45,8 +45,8 @@ async function renderApp() {
     const characters = body.results.map((character) =>
       createCharacterCard(character)
     );
-    document.querySelector('main').innerHTML = '';
-    document.querySelector('main').append(...characters);
+    mainElement.innerHTML = '';
+    mainElement.append(...characters);
   }
 
   const searchBar = createSearchBar(handleSubmit);
