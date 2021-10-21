@@ -1,6 +1,7 @@
 import './style.css';
 import { createElement } from './lib/element.js';
 import createCharacterCard from './components/characterCard';
+import apifetchFunction from './lib/apifetch';
 
 async function renderApp() {
   const appElement = document.querySelector('#app');
@@ -27,16 +28,14 @@ async function renderApp() {
     ]
   );
 
-  const characterResponse = await fetch(
+  const characters = await apifetchFunction(
     'https://rickandmortyapi.com/api/character'
   );
-  const body = await characterResponse.json();
-  console.log(body);
-  const characters = body.results;
 
   const characterCards = characters.map((character) =>
     createCharacterCard(character)
   );
+
   const mainElement = createElement(
     'main',
     {
