@@ -37,9 +37,19 @@ async function renderApp() {
     createCharacterCard(character)
   );
 
-  const searchBar = createSearchBar(function () {
-    alert('search');
-  });
+  async function handleSubmit(search) {
+    const response = await fetch(
+      `https://rickandmortyapi.com/api/character/?name=${search}`
+    );
+    const body = await response.json();
+    const characters = body.results.map((character) =>
+      createCharacterCard(character)
+    );
+    document.querySelector('main').innerHTML = '';
+    document.querySelector('main').append(...characters);
+  }
+
+  const searchBar = createSearchBar(handleSubmit);
 
   const mainElement = createElement(
     'main',
