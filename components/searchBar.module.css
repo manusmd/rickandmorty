@@ -1,0 +1,19 @@
+.searchForm {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  margin: 2rem 2rem 0 2rem;
+}
+
+.searchInput {
+  height: 3rem;
+  border: none;
+  text-align: center;
+  border-radius: 1rem;
+  margin-right: 1rem;
+  font-size: 1.2rem;
+}
+
+.searchButton {
+  border-radius: 0.5rem;
+  border: none;
+}
