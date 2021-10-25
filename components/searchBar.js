@@ -2,9 +2,16 @@ import { createElement } from '../lib/element';
 import styles from './searchBar.module.css';
 
 export default function createSearchBar(onSubmit) {
+  let timeoutID;
   const searchInput = createElement('input', {
     className: styles.searchInput,
     placeholder: 'Search for a character',
+    oninput: () => {
+      clearTimeout(timeoutID);
+      timeoutID = setTimeout(() => {
+        onSubmit(searchInput.value);
+      }, 300);
+    },
   });
   const searchButton = createElement('input', {
     className: styles.searchButton,
@@ -16,10 +23,6 @@ export default function createSearchBar(onSubmit) {
     'form',
     {
       className: styles.searchForm,
-      onsubmit: (event) => {
-        event.preventDefault();
-        onSubmit(searchInput.value);
-      },
     },
     [searchInput, searchButton]
   );
